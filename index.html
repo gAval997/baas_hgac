@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Backend as a Service</title>
+		<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+	</head>
+	<body>
+		<div class="container mt-2">
+			<div class="row">
+				<div class="col-12" id="table_student_container">
+					<table id="table_student" style="border-collapse: collapse;">
+						<thead>
+							<th style="border: 1px solid black; text-align: center; width: 10%;">UID</th>
+							<th style="border: 1px solid black; text-align: center; width: 10%;">Nombre</th>
+							<th style="border: 1px solid black; text-align: center; width: 10%;">Apellido</th>
+							<th style="border: 1px solid black; text-align: center; width: 10%;">Cuatrimestre</th>
+							<th style="border: 1px solid black; text-align: center; width: 10%;">Correo Electronico</th>
+							<th style="border: 1px solid black; text-align: center; width: 10%;">Usuario</th>
+							<th style="border: 1px solid black; text-align: center; width: 10%;">Direccion</th>
+							<th style="border: 1px solid black; text-align: center; width: 10%;">Telefono Celular</th>
+							<th style="border: 1px solid black; text-align: center; width: 10%;">Telefono</th>
+							<th style="border: 1px solid black; text-align: center; width: 10%;">Grupo</th>
+						</thead>
+						<tbody></tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row mt-3">
+				<div class="col-6">
+					<div class="container-fluid">
+						<div class="card">
+							<div class="card-body">
+								<h5 class="card-title">Agregar nuevo estudiante</h5>
+								<div class="row">
+									<input type="text" class="form-control" id="new_first_name" placeholder="Nombre" />
+								</div>
+								<div class="row">
+									<input type="text" class="form-control" id="new_last_name" placeholder="Apellido"/>
+								</div>
+								<div class="row">
+									<input type="text" class="form-control" id="new_email" placeholder="Correo Electronico" />
+								</div>
+								<div class="row">
+									<input type="text" class="form-control" id="new_level" placeholder="Cuatrimestre" />
+								</div>
+								<div class="row">
+									<input type="text" class="form-control" id="new_username" placeholder="Usuario" />
+								</div>
+								<div class="row">
+									<input type="text" class="form-control" id="new_address" placeholder="Direccion" />
+								</div>
+								<div class="row">
+									<input type="text" class="form-control" id="new_cellphone" placeholder="Celular" />
+								</div>
+								<div class="row">
+									<input type="text" class="form-control" id="new_phone" placeholder="Telefono" />
+								</div>
+								<div class="row">
+									<input type="text" class="form-control" id="new_group_id" placeholder="Grupo" />
+								</div>
+								<div class="row">
+									<button id="btn_add_student" class="btn btn-info mb-3 mt-3">Agregar usuario</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-6">
+					<div class="container-fluid">
+						<div class="card">
+							<div class="card-body">
+								<h5 class="card-title">Actualizar datos de estudiante</h5>
+								<div class="row">
+									<input type="text" class="form-control" id="update_id" placeholder="ID" disabled hidden/>
+								</div>
+								<div class="row">
+									<input type="text" class="form-control" id="update_first_name" placeholder="Nombre" />
+								</div>
+								<div class="row">
+									<input type="text" class="form-control" id="update_last_name" placeholder="Apellido"/>
+								</div>
+								<div class="row">
+									<input type="text" class="form-control" id="update_email" placeholder="Correo Electronico" />
+								</div>
+								<div class="row">
+									<input type="text" class="form-control" id="update_level" placeholder="Cuatrimestre" />
+								</div>
+								<div class="row">
+									<input type="text" class="form-control" id="update_username" placeholder="Usuario" />
+								</div>
+								<div class="row">
+									<input type="text" class="form-control" id="update_address" placeholder="Direccion" />
+								</div>
+								<div class="row">
+									<input type="text" class="form-control" id="update_cellphone" placeholder="Celular" />
+								</div>
+								<div class="row">
+									<input type="text" class="form-control" id="update_phone" placeholder="Telefono" />
+								</div>
+								<div class="row">
+									<input type="text" class="form-control" id="update_group_id" placeholder="Grupo" />
+								</div>
+								<div class="row">
+									<button id="btn_update_student" class="btn btn-info mb-3 mt-3">Actualizar datos usuario</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-6 mt-3">
+					<div class="container-fluid">
+						<div class="card">
+							<div class="card-body">
+								<h5 class="card-title">Eliminar estudiante</h5>
+								<div class="row">
+									<input type="text" class="form-control" id="delete_id" placeholder="ID"/>
+								</div>
+								<div class="row">
+									<button id="btn_delete_student" class="btn btn-info mb-3 mt-3">Eliminar usuario</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-auth.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-firestore.js"></script>
+		<script src="https://code.jquery.com/jquery-3.5.0.min.js"
+			integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+			crossorigin="anonymous">
+		</script>
+		<script charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+		<script src="./index.js"></script>
+	</body>
+</html>
