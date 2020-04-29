@@ -1,5 +1,5 @@
 $(() => {
-	const apiKey = 'AIzaSyC72GZECOH_G_Pw6ExeoTcbw_6Vn1pc0OI';
+	const apiKey = '';
 	const projectId = 'bedu-firebase-hgac';
 	const collections = {
 		student: 'student'
