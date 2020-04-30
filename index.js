@@ -1,5 +1,5 @@
 $(() => {
-	const apiKey = '';
+	const apiKey = 'AIzaSyC72GZECOH_G_Pw6ExeoTcbw_6Vn1pc0OI';
 	const projectId = 'bedu-firebase-hgac';
 	const collections = {
 		student: 'student'
@@ -24,7 +24,7 @@ $(() => {
 				const data = doc.data();
 
 				table_builder += (`<tr data-id="${id}">`);
-				table_builder += (`	<td style="border: 1px solid black; text-align: center; width: 10%;" class="first_name">${id}</td>`);
+				table_builder += (`	<td style="border: 1px solid black; text-align: center; width: 10%;" class="uid">${id}</td>`);
 				table_builder += (`	<td style="border: 1px solid black; text-align: center;" class="first_name">${data.first_name}</td>`);
 				table_builder += (`	<td style="border: 1px solid black; text-align: center;" class="last_name">${data.last_name}</td>`);
 				table_builder += (`	<td style="border: 1px solid black; text-align: center;" class="level">${data.level}</td>`);
@@ -49,6 +49,7 @@ $(() => {
 	$("body").on("dblclick", "#table_student_container tbody tr", (e) => {
 		const tr = $(e.target).closest("tr");
 
+		console.log($(tr).find(".first_name"));
 		const id = $(tr).data("id");
 		const first_name = $(tr).find(".first_name").text();
 		const last_name = $(tr).find(".last_name").text();
